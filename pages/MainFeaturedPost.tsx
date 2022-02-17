@@ -35,7 +35,7 @@ export default function MainFeaturedPost() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return data.newPost.map(({ subtitle, title, body, image }) => (
+  return data.newPost.map(({ subtitle, title, body, image }:{title:any, image:any, subtitle:any, body:any}) => (
     <Paper
       sx={{
         position: "relative",

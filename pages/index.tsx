@@ -44,7 +44,7 @@ function OlderPost() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return data.allPosts.map(({ subtitle, title, body, image }) => (
+  return data.allPosts.map(({ title, image }:{title:any, image:any}) => (
     <Paper
       sx={{
         position: "relative",
