@@ -13,10 +13,9 @@ import {
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
-import MainFeaturedPost from "./MainFeaturedPost";
-import Header from "./Header";
+import MainFeaturedPost from "../components/MainFeaturedPost";
+import Header from "../components/Header";
 
 const client = new ApolloClient({
   uri: "https://practicedbapp.herokuapp.com/graphql",
@@ -28,6 +27,7 @@ const sections = [
   { title: "About", url: "#" },
   { title: "Personal Website", url: "#" },
 ];
+
 
 const wowie = gql`
   query {
