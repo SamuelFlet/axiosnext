@@ -1,28 +1,16 @@
-@font-face {
-  font-family: "CoolFonts";
-  src: url(/styles/kingsgmb.ttf);
-}
-
-.title {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-    text-align: center;
-}
-
 .titles {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: 2rem;
   max-width: 18rem;
-
 }
 
 .flexy {
   align-self: center;
   justify-self: center;
-  width:60%
+  width: 60%;
 }
-.flexs{
+.flexs {
   align-self: center;
   width: 60%;
   display: flex;

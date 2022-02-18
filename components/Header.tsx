@@ -20,8 +20,8 @@ export default function Header(props: HeaderProps) {
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Typography
-          component="h2"
-          variant="h5"
+          component="h1"
+          variant="h3"
           color="inherit"
           align="center"
           noWrap
