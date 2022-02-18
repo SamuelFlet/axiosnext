@@ -16,7 +16,10 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MainFeaturedPost from "../components/MainFeaturedPost";
 import Header from "../components/Header";
-
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 const client = new ApolloClient({
   uri: "https://practicedbapp.herokuapp.com/graphql",
   cache: new InMemoryCache(),
@@ -25,17 +28,19 @@ const client = new ApolloClient({
 const sections = [
   { title: "Home", url: "/" },
   { title: "About", url: "#" },
-  { title: "Personal Website", url: "#" },
+  { title: "Personal Website", url: "https://www.samfletch.sbs/" },
 ];
-
 
 const wowie = gql`
   query {
     allPosts(L: 1) {
       title
+      subtitle
+      publishDate
       image
     }
   }
+  
 `;
 
 function OlderPost() {
@@ -44,51 +49,28 @@ function OlderPost() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return data.allPosts.map(({ title, image }:{title:any, image:any}) => (
-    <Paper
-      sx={{
-        position: "relative",
-        backgroundColor: "grey.800",
-        color: "#fff",
-        mb: 4,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Increase the priority of the hero background image */}
-      <Image src={image} alt="Alt Text" layout="fill" />
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          backgroundColor: "rgba(0,0,0,.3)",
-        }}
-      />
-      <Grid container>
-        <Grid item md={6}>
-          <Box
-            sx={{
-              position: "relative",
-              p: { xs: 3, md: 6 },
-              pr: { md: 0 },
-            }}
-          >
-            <Typography
-              component="h1"
-              variant="h3"
-              color="inherit"
-              gutterBottom
-            >
+  return data.allPosts.map(({ title,subtitle,publishDate, image }: { publishDate:any, subtitle:any, title: any; image: any }) => (
+    <Grid item xs={12} md={6} sx={{ p: 2 }}>
+      <CardActionArea component="a" href="#">
+        <Card sx={{ display: "flex" }}>
+          <CardContent sx={{ flex: 1 }}>
+            <Typography component="h2" variant="h5">
               {title}
             </Typography>
-          </Box>
-        </Grid>
-      </Grid>
-    </Paper>
+            <Typography variant="subtitle1" color="text.secondary">
+              {publishDate}
+            </Typography>
+            <Typography variant="subtitle1" paragraph>
+              {subtitle}
+            </Typography>
+            <Typography variant="subtitle1" color="primary">
+              Continue reading...
+            </Typography>
+          </CardContent>
+          <Image src={image} alt="ewnigig" height={200} width={200} />
+        </Card>
+      </CardActionArea>
+    </Grid>
   ));
 }
 
@@ -112,6 +94,8 @@ const Home: NextPage = () => {
           <Header title="Samuel's Blog" sections={sections} />
           <div className={styles.flexy}>
             <MainFeaturedPost />
+          </div>
+          <div className={styles.flexs}>
             <OlderPost />
           </div>
         </main>
